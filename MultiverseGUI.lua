@@ -1,13 +1,6 @@
 getgenv().Tap = false;
 getgenv().DarkCrystal = false;
 getgenv().TeenCrystal = false;
-getgenv().AutofarmClown = false;
-getgenv().AutofarmDualFace = false;
-getgenv().AutofarmPuzzler = false;
-getgenv().AutofarmClownBoss = false;
-getgenv().AutofarmClownMinion = false;
-getgenv().AutofarmClownHenchman = false;
-getgenv().AutofarmClownAssassin = false;
 getgenv().SelectedEnemy = nil;
 getgenv().Autofarm = false;
 
@@ -30,78 +23,6 @@ spawn(function()
 end)
 end
 
-function doClown()
-spawn(function()
-    while AutofarmClown == true do
-        local args = {[1] = workspace.Maps:FindFirstChild("Gothic City").EnemyFolder.Clown}
-    
-game:GetService("ReplicatedStorage").Remotes.HeroRemotes.AttackEnemy:FireServer(unpack(args))
-wait(3)
-    end
-end)
-end
-
-function doDualFace()
-spawn(function()
-    while AutofarmDualFace == true do
-        local args = {[1] = workspace.Maps:FindFirstChild("Gothic City").EnemyFolder:FindFirstChild("Dual-Face")}
-        
-game:GetService("ReplicatedStorage").Remotes.HeroRemotes.AttackEnemy:FireServer(unpack(args))
-wait(3)
-    end
-end)
-end
-
-function doPuzzler()
-spawn(function()
-    while AutofarmDualFace == true do
-        local args = {[1] = workspace.Maps:FindFirstChild("Gothic City").EnemyFolder.Puzzler}
-        game:GetService("ReplicatedStorage").Remotes.HeroRemotes.AttackEnemy:FireServer(unpack(args))
-        wait(3)
-    end
-end)
-end
-
-function doClownBoss()
-    spawn(function()
-        while AutofarmDualFace == true do
-            local args = {[1] = workspace.Maps:FindFirstChild("Gothic City").EnemyFolder:FindFirstChild("Clown Boss")}
-    game:GetService("ReplicatedStorage").Remotes.HeroRemotes.AttackEnemy:FireServer(unpack(args))
-    wait(3)
-        end
-    end)
-end
-
-function doClownMinion()
-spawn(function()
-    while AutofarmClownMinion == true do
-        local args = {[1] = GothicAutofarm.EnemyFolder:FindFirstChild("Clown Minion")}
-        remotePath.HeroRemotes.AttackEnemy:FireServer(unpack(args))
-wait(3)
-    end
-end)
-end
-
-function doClownHenchman()
-    spawn(function()
-        while AutofarmClownHenchman == true do
-            local args = {[1] = GothicAutofarm.EnemyFolder:FindFirstChild("Clown Henchman")}
-            remotePath.HeroRemotes.AttackEnemy:FireServer(unpack(args))
-    wait(3)
-        end
-    end)
-    end
-
-function doClownAssassin()
-    spawn(function()
-        while AutofarmClownAssassin == true do
-            local args = {[1] = GothicAutofarm.EnemyFolder:FindFirstChild("Clown Assassin")}
-            remotePath.HeroRemotes.AttackEnemy:FireServer(unpack(args))
-    wait(3)
-        end
-    end)
-    end
-
 function doDarkCrystal()
 spawn(function()
     while DarkCrystal == true do
@@ -114,12 +35,22 @@ end
 
 function doTeenCrystal()
 spawn(function()
-    while DarkCrystal == true do
+    while TeenCrystal == true do
         local args = {[1] = "Hop City"}
         remotePath.InventoryRemotes.HeroRoll:InvokeServer(unpack(args))
         wait(2.5)
     end
 end)
+end
+
+function doGalaxyCrystal()
+spawn(function()
+        while GalaxyCrystal == true do
+            local args = {[1] = "Zandor"}
+            remotePath.InventoryRemotes.HeroRoll:InvokeServer(unpack(args))
+            wait(2.5)
+        end
+    end)
 end
 
 local library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/AikaV3rm/UiLib/master/Lib.lua')))()
@@ -132,15 +63,8 @@ local z = library:CreateWindow("DestroyGUI")
 
 local l = x:CreateFolder("Autofarm")
 local a = x:CreateFolder("Autoclicker")
-local b = x:CreateFolder("Manhattan")
-local c = x:CreateFolder("Zandor")
-local d = x:CreateFolder("Hop City")
-local e = x:CreateFolder("Gothic City")
 
-local f = y:CreateFolder("Manhattan")
-local g = y:CreateFolder("Zandor")
-local h = y:CreateFolder("Hop City")
-local i = y:CreateFolder("Gothic City")
+local f = y:CreateFolder("Crystals")
 
 local j = z:CreateFolder("Destroy")
 
@@ -154,63 +78,15 @@ a:Toggle("Auto Tap",function(bool)
     end
 end)
 
-e:Toggle("Clown",function(bool)
-    getgenv().AutofarmClown = bool
-    print("Clown is : ",bool);
+f:Toggle("GalaxyCrystal",function(bool)
+    getgenv().GalaxyCrystal = bool
+    print("Auto Galaxy is : ",bool);
     if bool then
-        doClown();
+        doGalaxyCrystal();
     end
 end)
 
-e:Toggle("Dual-Face",function(bool)
-    getgenv().AutofarmDualFace = bool
-    print("Dual-Face is : ",bool);
-    if bool then
-        doDualFace();
-    end
-end)
-
-e:Toggle("Puzzler",function(bool)
-    getgenv().AutofarmDualFace = bool
-    print("Puzzler is : ",bool);
-    if bool then
-        doPuzzler();
-    end
-end)
-
-e:Toggle("ClownBoss",function(bool)
-    getgenv().AutofarmClownBoss = bool
-    print("ClownBoss is : ",bool);
-    if bool then
-        doClownBoss();
-    end
-end)
-
-e:Toggle("ClownMinion",function(bool)
-    getgenv().AutofarmClownMinion = bool
-    print("ClownMinion is : ",bool);
-    if bool then
-        doClownMinion();
-    end
-end)
-
-e:Toggle("ClownHenchman",function(bool)
-    getgenv().AutofarmClownMinion = bool
-    print("ClownHenchman is : ",bool);
-    if bool then
-        doClownHenchman();
-    end
-end)
-
-e:Toggle("ClownAssassin",function(bool)
-    getgenv().AutofarmClownAssassin = bool
-    print("ClownAssassin is : ",bool);
-    if bool then
-        doClownAssassin();
-    end
-end)
-
-h:Toggle("TeenCrystal",function(bool)
+f:Toggle("TeenCrystal",function(bool)
     getgenv().TeenCrystal = bool
     print("Auto Hop is : ",bool);
     if bool then
@@ -218,7 +94,7 @@ h:Toggle("TeenCrystal",function(bool)
     end
 end)
 
-i:Toggle("DarkCrystal",function(bool)
+f:Toggle("DarkCrystal",function(bool)
     getgenv().DarkCrystal = bool
     print("Auto Gothic Hatch is : ",bool);
     if bool then
@@ -231,8 +107,6 @@ k:Button("GothicCity",function()
     doGothicCity();
     remotePath.LocationRemotes.RespawnRequest:FireServer()
 end)
-
-
 
 local Enemys = {}
 local Maps = {}
