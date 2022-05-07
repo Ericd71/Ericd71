@@ -1,7 +1,7 @@
 - 👋 Hi, I’m @Ericd71
 - 👀 I’m interested in Roblox scripting
 - 🌱 I’m currently learning lua
-- 💞️ I’m looking to collaborate on ...
+- 💞️ I’m looking to collaborate on Roblox scripts or games
 - 📫 How to reach me: OrangeIsTheColour#4868 on Discord
 
 <!---
